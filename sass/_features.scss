@@ -4,6 +4,29 @@
     margin: 15rem 0;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    //grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // without media queries columns will adjust
     gap: 6rem;// grid-gap property is obsolete, we can use gap property and provide <grid-row-gap> <grid-column-gap>
+    align-items: start;
+}
+
+.feature {
+    display: grid;
+    grid-template-columns: min-content 1fr; //doesn't need to define rows, it'll be automatically be adjusted
+    row-gap: 1.5rem;
+    column-gap: 2.5rem;
+
+
+    &__icon {
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        //grid-row: 1 / -1; //this -1 will only work when we define explicit grid, but here we didn't define the grid rows; so this will not work
+        grid-row: 1 / span 2;
+        transform: translateY(-1rem);
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
 }
